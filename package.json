@@ -30,7 +30,8 @@
     "devicons": "^1.8.0",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.6",
-    "simple-line-icons": "^2.4.1"
+    "simple-line-icons": "^2.4.1",
+    "startbootstrap-resume": "file:"
   },
   "devDependencies": {
     "browser-sync": "2.18.13",
