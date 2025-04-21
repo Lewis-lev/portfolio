@@ -100,6 +100,7 @@
     </section>
 
     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+      <h2 class="text-center mb-5">Experience</h2>
 
       <div class="container">
         <div class="row" style="row-gap: 2rem;">
@@ -126,7 +127,6 @@
             </div>
           </div>
 
-          <!-- Card 2 -->
           <div class="col-12 col-md-6 col-lg-4 d-flex">
             <div class="card flex-fill h-100" style="width: 100%">
               <img class="card-img-top" src="img/Screenshot 2025-04-21 100037.png" alt="Card image cap">
@@ -149,8 +149,7 @@
             </div>
           </div>
 
-          <!-- Card 3 -->
-          <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <!-- <div class="col-12 col-md-6 col-lg-4 d-flex">
             <div class="card flex-fill h-100" style="width: 100%">
               <img class="card-img-top" src="..." alt="Card image cap">
               <div class="card-body d-flex flex-column">
@@ -171,7 +170,6 @@
             </div>
           </div>
 
-          <!-- Card 4 -->
           <div class="col-12 col-md-6 col-lg-4 d-flex">
             <div class="card flex-fill h-100" style="width: 100%">
               <img class="card-img-top" src="..." alt="Card image cap">
@@ -212,7 +210,7 @@
                 <a href="#" class="btn btn-primary d-flex justify-content-center mt-auto">Go somewhere</a>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Add more cards here as needed, each within a new col-12 col-md-6 col-lg-4 d-flex -->
         </div>
@@ -301,25 +299,72 @@
     </section>
 
     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
-      <div class="my-auto">
-        <h2 class="mb-5">Certifications</h2>
-        <ul class="fa-ul mb-0">
-          <li>
-            <i class="fa-li fa fa-certificate text-warning"></i>
-            Junior Web Developer (Vocational School Graduate Academy)
-          </li>
-          <li>
-            <i class="fa-li fa fa-certificate text-warning"></i>
-            Belajar Dasar Pemrograman JavaScript
-          </li>
-          <li>
-            <i class="fa-li fa fa-certificate text-warning"></i>
-            Belajar Dasar Visualisasi Data
-          </li>
-        </ul>
+      <h2 class="text-center mb-5">Certification</h2>
+
+      <div class="container">
+        <div class="row" style="row-gap: 2rem;">
+
+          <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+              <button type="button" class="card-img-top-btn" data-toggle="modal" data-target="#imageZoomModal" data-img="img/Screenshot 2025-04-21 151306.png" aria-label="Zoom certificate image">
+                <img class="card-img-top" src="img/Screenshot 2025-04-21 151306.png" alt="Certificate: RVZKRL91QPD5">
+              </button>
+              <div class="card-body">
+                <a href="https://www.dicoding.com/certificates/RVZKRL91QPD5" target="_blank" rel="noopener noreferrer">Check Credentials</a>
+                <p class="card-text">Credential ID: RVZKRL91QPD5</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+              <button type="button" class="card-img-top-btn" data-toggle="modal" data-target="#imageZoomModal" data-img="img/Screenshot 2025-04-21 152053.png" aria-label="Zoom certificate image">
+                <img class="card-img-top" src="img/Screenshot 2025-04-21 152053.png" alt="Certificate: 0LZ0688Y3Z65">
+              </button>
+              <div class="card-body">
+                <a href="https://www.dicoding.com/certificates/0LZ0688Y3Z65" target="_blank" rel="noopener noreferrer">Check Credentials</a>
+                <p class="card-text">Credential ID: 0LZ0688Y3Z65</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+              <button type="button" class="card-img-top-btn" data-toggle="modal" data-target="#imageZoomModal" data-img="img/Screenshot 2025-04-21 151334.png" aria-label="Zoom certificate image">
+                <img class="card-img-top" src="img/Screenshot 2025-04-21 151334.png" alt="Certificate: 19385991110-11">
+              </button>
+              <div class="card-body">
+                <a href="https://digitalent.kominfo.go.id/cek-sertifikat" target="_blank" rel="noopener noreferrer">Check Credentials</a>
+                <p class="card-text">Credential ID: 19385991110-11</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+              <button type="button" class="card-img-top-btn" data-toggle="modal" data-target="#imageZoomModal" data-img="img/Sertifikat web junior.jpg" aria-label="Zoom certificate image">
+                <img class="card-img-top" src="img/Sertifikat web junior.jpg" alt="Certificate: Junior Web Developer">
+              </button>
+              <div class="card-body">
+            </div>
+          </div>
+
+        </div>
       </div>
+
     </section>
 
+  </div>
+
+  <div class="modal fade" id="imageZoomModal" tabindex="-1" role="dialog" aria-labelledby="imageZoomModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content bg-transparent border-0 position-relative">
+        <button type="button" class="close position-absolute text-white" data-dismiss="modal" aria-label="Close" style="right: 1rem; top: 1rem; z-index:2;">
+          <span aria-hidden="true" style="font-size:2rem;">&times;</span>
+        </button>
+        <img src="" alt="Zoomed image" id="zoomed-image" class="img-fluid rounded shadow" style="display:block; margin:auto; max-height:80vh; background:white;">
+      </div>
+    </div>
   </div>
 
   <!-- Bootstrap core JavaScript -->
@@ -351,6 +396,13 @@
           }
         });
       });
+    });
+
+    $('#imageZoomModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var imgSrc = button.data('img');
+      var modal = $(this);
+      modal.find('#zoomed-image').attr('src', imgSrc);
     });
   </script>
 
