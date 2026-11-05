@@ -1,0 +1,84 @@
+---
+import { getCollection, render } from "astro:content";
+import { Picture } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icon from "../../components/Icon.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import { projects } from "../../data/portfolio";
+
+export async function getStaticPaths() {
+  const stories = await getCollection("projects");
+
+  return projects.map((project) => {
+    const story = stories.find((entry) => entry.id === project.slug);
+    if (!story) throw new Error(`Missing project content for "${project.slug}".`);
+
+    return {
+      params: { slug: project.slug },
+      props: { project, story },
+    };
+  });
+}
+
+const { project, story } = Astro.props;
+const { Content } = await render(story);
+const title = `${project.title} — Haji Makki Madani Shofa`;
+---
+
+<BaseLayout title={title} description={story.data.description}>
+  <SiteNav />
+  <main class="case-study">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href={`${import.meta.env.BASE_URL}`}>Home</a>
+      <span aria-hidden="true">/</span>
+      <a href={`${import.meta.env.BASE_URL}#experience`}>Projects</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{project.title}</span>
+    </nav>
+
+    <header class="case-study__header">
+      <p class="eyebrow"><span class="eyebrow-mark"></span>{story.data.category}</p>
+      <h1>{project.title}</h1>
+      <p class="case-study__intro">{story.data.description}</p>
+      <a class="button-primary" href={project.href} target="_blank" rel="noopener noreferrer">
+        Visit live project <Icon name="external" />
+      </a>
+    </header>
+
+    <figure class="case-study__image" transition:name={`project-image-${project.slug}`}>
+      <Picture
+        src={project.image}
+        alt={project.imageAlt}
+        widths={[800, 1200, 1600]}
+        sizes="(min-width: 1200px) 80vw, 100vw"
+        formats={["avif", "webp"]}
+        loading="eager"
+        fetchpriority="high"
+      />
+      <figcaption>{project.imageAlt}</figcaption>
+    </figure>
+
+    <div class="case-study__body">
+      <aside class="case-study__sidebar">
+        <p class="eyebrow">PROJECT SNAPSHOT</p>
+        <h2>At a glance</h2>
+        <ul class="highlight-list">
+          {story.data.highlights.map((highlight) => <li><Icon name="check" />{highlight}</li>)}
+        </ul>
+        {project.note && <p class="case-study__note">{project.note}</p>}
+      </aside>
+      <article class="prose">
+        <Content />
+      </article>
+    </div>
+
+    <footer class="case-study__footer">
+      <a class="text-link" href={`${import.meta.env.BASE_URL}#experience`}>
+        <Icon name="arrow-left" /> Back to all projects
+      </a>
+      <a class="button-primary" href={project.href} target="_blank" rel="noopener noreferrer">
+        Visit live project <Icon name="external" />
+      </a>
+    </footer>
+  </main>
+</BaseLayout>

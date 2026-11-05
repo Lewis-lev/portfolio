@@ -3,6 +3,7 @@ import { Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
 interface Props {
+  index: number;
   image: ImageMetadata;
   zoomSrc: string;
   alt: string;
@@ -10,32 +11,39 @@ interface Props {
   credential?: string;
 }
 
-const { image, zoomSrc, alt, href, credential } = Astro.props;
+const { index, image, zoomSrc, alt, href, credential } = Astro.props;
 ---
 
-<article class="col-sm">
-  <div class="card certificate-card">
+<article class="certificate-card" data-reveal>
+  <div class="certificate-card__topline"><span>0{index}</span><span>VERIFIED LEARNING</span></div>
     <button
       type="button"
-      class="card-img-top-btn"
+      class="certificate-card__image-button"
       data-full-src={zoomSrc}
       data-full-alt={alt}
       aria-label={`View larger image: ${alt}`}
     >
       <Picture
-        class="card-img-top"
+        class="certificate-card__image"
         src={image}
         alt={alt}
         widths={[320, 480, 640]}
-        sizes="(min-width: 1200px) 20vw, (min-width: 768px) 30vw, 80vw"
+        sizes="(min-width: 1100px) 24vw, (min-width: 650px) 48vw, 90vw"
         formats={["avif", "webp"]}
         loading="lazy"
       />
     </button>
-    <div class="card-body">
-      {href && <a href={href} target="_blank" rel="noopener noreferrer">Check credentials</a>}
-      {credential && <p class="card-text">Credential ID: {credential}</p>}
-      {!href && !credential && <p class="card-text">Junior Web Developer</p>}
+    <div class="certificate-card__content">
+      <div>
+        <h3>{alt.replace("Certificate: ", "")}</h3>
+        {credential && <p>Credential ID: {credential}</p>}
+      </div>
+      {href ? (
+        <a class="certificate-card__link" href={href} target="_blank" rel="noopener noreferrer">
+          Verify <span aria-hidden="true">↗</span>
+        </a>
+      ) : (
+        <span class="certificate-card__link">Professional certification</span>
+      )}
     </div>
-  </div>
 </article>

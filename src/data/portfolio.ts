@@ -9,51 +9,66 @@ import certificateJunior from "../assets/images/Sertifikat web junior.jpg";
 import certificateKominfo from "../assets/images/Screenshot 2025-04-21 151334.png";
 
 export interface Project {
+  slug: string;
   title: string;
   summary: string;
   description: string;
   image: ImageMetadata;
   imageAlt: string;
+  category: string;
+  tags: string[];
   href: string;
   note?: string;
 }
 
 export const projects: Project[] = [
   {
+    slug: "mylibrary",
     title: "MyLibrary",
     summary: "A full-featured library management system built with Laravel.",
     description:
       "Manage book inventories, borrowing activities, and user accounts. The application supports both administrators and borrowers with role-based access.",
     image: libraryImage,
     imageAlt: "MyLibrary library management application",
+    category: "Management system",
+    tags: ["Laravel", "Library"],
     href: "https://library.infy.click/",
     note: "The hosted demo may take a moment to load.",
   },
   {
+    slug: "desa-wisata-sambirejo",
     title: "Desa Wisata Sambirejo",
     summary: "A tourism-focused website for Desa Wisata Sambirejo.",
     description:
       "Promotes local attractions, culture, and community-based tourism. Visitors can explore destinations, view upcoming events, and discover local products.",
     image: sambirejoImage,
     imageAlt: "Desa Wisata Sambirejo tourism website",
+    category: "Tourism",
+    tags: ["Tourism", "Community"],
     href: "https://sambirejo.site.je/",
   },
   {
+    slug: "dispertaru",
     title: "Dispertaru",
     summary: "A web-based CRUD application for building-use-right extension requests.",
     description:
       "Streamlines the submission and management of Perpanjangan Hak Guna Bangunan (HGB) under the Dinas Pertanahan dan Tata Ruang (Dispertaru), digitizing the process and reducing manual paperwork.",
     image: dispertaruImage,
     imageAlt: "Dispertaru rights extension management application",
+    category: "Public sector",
+    tags: ["Public sector", "Digital workflow"],
     href: "http://dispertaru.rf.gd/",
   },
   {
+    slug: "kiara-rope-access",
     title: "Kiara Rope Access",
     summary: "A website for a Yogyakarta-based building care company.",
     description:
       "Kiara's specialist climbers help building owners look after glass, walls, and exterior details using rope access and climbing-specific safety equipment.",
     image: kiaraImage,
     imageAlt: "Kiara Rope Access application",
+    category: "Business website",
+    tags: ["Business", "Service"],
     href: "https://lewis-lev.github.io/kiara/",
   },
 ];

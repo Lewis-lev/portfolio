@@ -1,11 +1,13 @@
 # Makki — Portfolio
 
-A fast, static portfolio built with Astro. The site keeps its dark and violet color palette, uses Astro's optimized image pipeline, and renders pages without a client-side UI framework.
+A fast, static portfolio built with Astro. The site keeps its dark and violet color palette, uses Astro's optimized image pipeline and typed content collections, and renders pages without a client-side UI framework.
+
+Project browsing includes instant text search and category filters. Each project opens as a statically generated Markdown case study, with shared-element page transitions between the card and the full project image. Astro also emits structured profile metadata and an XML sitemap at build time.
 
 ## Requirements
 
 - Node.js 22.23.4 or newer
-- npm 9.6.5 or newer
+- npm 10.8.2 or newer
 
 ## Development
 
@@ -25,9 +27,9 @@ Useful commands:
 
 ## Updating portfolio content
 
-Project cards, certificates, social profiles, skills, workflow items, and interests are defined in `src/data/portfolio.ts`. Add images under `src/assets/images` and import them in that data file so Astro can optimize them during the build.
+Project cards, certificates, social profiles, skills, workflow items, and interests are defined in `src/data/portfolio.ts`. Each project has a matching, schema-validated Markdown case study in `src/content/projects/`; add a corresponding content file there when adding a project so Astro can generate its detail page. The build verifies each project's Markdown entry exists and its frontmatter matches the collection schema.
 
-Shared page metadata and document markup live in `src/layouts/BaseLayout.astro`; reusable navigation, project, certificate, and icon components live in `src/components`.
+Add images under `src/assets/images` and import them in `src/data/portfolio.ts` so Astro can optimize responsive image variants at build time. Shared metadata, structured data, and animated page navigation live in `src/layouts/BaseLayout.astro`. Reusable navigation, project, certificate, and icon components live in `src/components`.
 
 ## Deployment
 
