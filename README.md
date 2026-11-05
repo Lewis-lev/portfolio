@@ -9,6 +9,21 @@ Project browsing includes instant text search and category filters. Each project
 - Node.js 22.23.4 or newer
 - npm 10.8.2 or newer
 
+The project pins Node.js `22.23.4` in `.nvmrc`. With nvm-windows installed, select the project runtime in PowerShell:
+
+```powershell
+nvm install 22.23.4
+nvm use 22.23.4
+node --version
+npm run dev
+```
+
+To try the pinned Node version without changing the system-wide Node installation, run:
+
+```powershell
+npm exec --yes --package=node@22.23.4 -- npm run dev
+```
+
 ## Development
 
 ```sh
