@@ -130,7 +130,7 @@ export const workflow = [
 ];
 
 export const interests = [
-  "Enjoy exploring various genres, which enhances strategic thinking and adaptability.",
+  "Enjoy exploring various games, which enhances strategic thinking and adaptability.",
   "Passionate about discovering new music genres, which fosters creativity and cultural awareness.",
   "Enjoy reading fiction and non-fiction, which strengthens critical thinking and broadens perspectives.",
   "Keen on diverse films, which improves storytelling skills and visual creativity.",
