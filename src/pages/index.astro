@@ -1,0 +1,157 @@
+---
+import { getImage } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CertificateCard from "../components/CertificateCard.astro";
+import Icon from "../components/Icon.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SiteNav from "../components/SiteNav.astro";
+import {
+  certificates,
+  interests,
+  projects,
+  skills,
+  socialLinks,
+  workflow,
+} from "../data/portfolio";
+
+const certificateCards = await Promise.all(
+  certificates.map(async (certificate) => ({
+    ...certificate,
+    zoomSrc: (await getImage({ src: certificate.image, format: "webp" })).src,
+  })),
+);
+
+const title = "Haji Makki Madani Shofa — Web Developer";
+const description =
+  "Portfolio of Haji Makki Madani Shofa, a web developer based in Yogyakarta, Indonesia.";
+---
+
+<BaseLayout title={title} description={description}>
+  <SiteNav />
+  <main class="container-fluid p-0">
+    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about" aria-labelledby="about-title">
+      <div class="my-auto hero-content">
+        <p class="eyebrow">
+          <span class="eyebrow-mark"></span> WEB DEVELOPER <span class="eyebrow-divider">/</span>
+          YOGYAKARTA, INDONESIA
+        </p>
+        <h1 class="mb-0" id="about-title">
+          Haji Makki
+          <span class="text-primary">Madani Shofa</span>
+        </h1>
+        <p class="subheading mb-4">Building thoughtful digital experiences, from interface to backend.</p>
+        <div class="hero-contact">
+          <span><Icon name="pin" /> Sleman, Yogyakarta</span>
+          <a href="mailto:hajimakkimadanishofa@gmail.com">
+            <Icon name="mail" /> hajimakkimadanishofa@gmail.com
+          </a>
+        </div>
+        <p class="hero-summary">
+          I’m a web developer focused on creating efficient, scalable, and visually engaging applications. I work
+          across frontend and backend, with experience in PHP, CodeIgniter 4, HTML, CSS, and JavaScript.
+        </p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#experience">
+            Explore my work <Icon name="arrow-down" />
+          </a>
+        </div>
+        <ul class="list-inline list-social-icons mb-0" aria-label="Social profiles">
+          {socialLinks.map(({ label, href, icon }) => (
+            <li class="list-inline-item">
+              <a
+                class="social-link"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${label} profile (opens in a new tab)`}
+              >
+                <span class="social-link-icon"><Icon name={icon} /></span>
+                <span>{label}</span>
+                <Icon name="external" class="social-link-external" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section
+      class="resume-section p-3 p-lg-5 d-flex flex-column"
+      id="experience"
+      aria-labelledby="projects-title"
+    >
+      <h2 class="mb-5" id="projects-title">Selected projects</h2>
+      <div class="container">
+        <div class="row project-grid">
+          {projects.map((project) => <ProjectCard {...project} />)}
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="resume-section p-3 p-lg-5 d-flex flex-column"
+      id="education"
+      aria-labelledby="education-title"
+    >
+      <div class="my-auto">
+        <h2 class="mb-5" id="education-title">Education</h2>
+        <article class="resume-item d-flex flex-column flex-md-row mb-5">
+          <div class="resume-content mr-auto">
+            <h3 class="mb-0">University of AMIKOM Yogyakarta</h3>
+            <div class="subheading mb-3">Bachelor of Computer Science</div>
+            <div>Informatics Management - Web Development Track</div>
+            <p>GPA: 3.55</p>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">September 2020 - January 2024</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills" aria-labelledby="skills-title">
+      <div class="my-auto">
+        <h2 class="mb-5" id="skills-title">Skills</h2>
+        <h3 class="subheading mb-3">Languages &amp; tools</h3>
+        <ul class="skill-list" aria-label="Languages and tools">
+          {skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+        <h3 class="subheading mb-3">Workflow</h3>
+        <ul class="workflow-list">
+          {workflow.map((item) => (
+            <li><Icon name="check" /> {item}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section
+      class="resume-section p-3 p-lg-5 d-flex flex-column"
+      id="interests"
+      aria-labelledby="interests-title"
+    >
+      <div class="my-auto">
+        <h2 class="mb-5" id="interests-title">Interests</h2>
+        {interests.map((interest) => <p>{interest}</p>)}
+      </div>
+    </section>
+
+    <section
+      class="resume-section p-3 p-lg-5 d-flex flex-column"
+      id="awards"
+      aria-labelledby="certifications-title"
+    >
+      <h2 class="mb-5" id="certifications-title">Certifications</h2>
+      <div class="container">
+        <div class="row certificate-grid">
+          {certificateCards.map((certificate) => <CertificateCard {...certificate} />)}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="image-dialog" aria-label="Certificate preview">
+    <button type="button" class="image-dialog__close" aria-label="Close certificate preview">&times;</button>
+    <img src="" alt="" class="image-dialog__image" />
+  </dialog>
+</BaseLayout>

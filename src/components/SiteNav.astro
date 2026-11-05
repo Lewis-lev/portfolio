@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import profile from "../assets/images/profile.webp";
+
+const links = [
+  { href: "#about", label: "About" },
+  { href: "#experience", label: "Projects" },
+  { href: "#education", label: "Education" },
+  { href: "#skills", label: "Skills" },
+  { href: "#interests", label: "Interests" },
+  { href: "#awards", label: "Certifications" },
+];
+---
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav" aria-label="Main navigation">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top" aria-label="Makki, back to top">
+    <span class="d-block d-lg-none">Makki<span class="brand-period">.</span></span>
+    <span class="d-none d-lg-block">
+      <Image
+        class="img-fluid img-profile rounded-circle mx-auto mb-2"
+        src={profile}
+        alt="Portrait of Haji Makki Madani Shofa"
+        width={160}
+        height={160}
+        format="webp"
+      />
+    </span>
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      {links.map(({ href, label }) => (
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href={href}>{label}</a>
+        </li>
+      ))}
+    </ul>
+    <div class="sidebar-footer d-none d-lg-block">
+      <span class="sidebar-footer-dot"></span>
+      Yogyakarta, Indonesia
+    </div>
+  </div>
+</nav>

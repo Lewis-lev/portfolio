@@ -1,0 +1,41 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  image: ImageMetadata;
+  zoomSrc: string;
+  alt: string;
+  href?: string;
+  credential?: string;
+}
+
+const { image, zoomSrc, alt, href, credential } = Astro.props;
+---
+
+<article class="col-sm">
+  <div class="card certificate-card">
+    <button
+      type="button"
+      class="card-img-top-btn"
+      data-full-src={zoomSrc}
+      data-full-alt={alt}
+      aria-label={`View larger image: ${alt}`}
+    >
+      <Picture
+        class="card-img-top"
+        src={image}
+        alt={alt}
+        widths={[320, 480, 640]}
+        sizes="(min-width: 1200px) 20vw, (min-width: 768px) 30vw, 80vw"
+        formats={["avif", "webp"]}
+        loading="lazy"
+      />
+    </button>
+    <div class="card-body">
+      {href && <a href={href} target="_blank" rel="noopener noreferrer">Check credentials</a>}
+      {credential && <p class="card-text">Credential ID: {credential}</p>}
+      {!href && !credential && <p class="card-text">Junior Web Developer</p>}
+    </div>
+  </div>
+</article>

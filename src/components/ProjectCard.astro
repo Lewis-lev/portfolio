@@ -1,0 +1,48 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  title: string;
+  summary: string;
+  description: string;
+  image: ImageMetadata;
+  imageAlt: string;
+  href: string;
+  note?: string;
+}
+
+const { title, summary, description, image, imageAlt, href, note } = Astro.props;
+---
+
+<article class="col-12 col-md-6 col-lg-4 d-flex">
+  <div class="card flex-fill h-100 project-card">
+    <Picture
+      class="card-img-top"
+      src={image}
+      alt={imageAlt}
+      widths={[400, 640, 800]}
+      sizes="(min-width: 1200px) 25vw, (min-width: 768px) 45vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+    />
+    <div class="card-body d-flex flex-column">
+      <h3 class="card-title">{title}</h3>
+      <p class="card-text flex-grow-1">{summary}</p>
+      <details class="project-details">
+        <summary>Read more</summary>
+        <p>{description}</p>
+        {note && <p class="project-note">{note}</p>}
+      </details>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary d-flex justify-content-center mt-auto"
+      >
+        View project <Icon name="external" class="link-icon" />
+      </a>
+    </div>
+  </div>
+</article>
