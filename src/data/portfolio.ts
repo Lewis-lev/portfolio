@@ -111,10 +111,11 @@ export const socialLinks = [
 ] as const;
 
 export const skills = [
-  "PHP",
-  "CodeIgniter 4",
   "HTML5",
   "CSS3",
+  "PHP",
+  "CodeIgniter",
+  "Laravel",
   "JavaScript",
   "jQuery",
   "Bootstrap",
